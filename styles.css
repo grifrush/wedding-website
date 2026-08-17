@@ -1,0 +1,2185 @@
+/* Wedding Website Styles - Cross-Browser Compatible */
+
+/* CSS Reset and Browser Normalization */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+body {
+    font-family: "Marney Holland", cursive;
+    line-height: 1.6;
+    color: #3d3d3d;
+    background: #fffdf3;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 0;
+}
+
+/* Form elements consistency */
+input, select, textarea, button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* Responsive container adjustments */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    will-change: transform;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    font-family: "the-seasons", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #53543a;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.55;
+}
+
+.nav-logo {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(28px, 4vw, 40px);
+    color: #53543a;
+    font-style: italic;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Scroll offset so fixed nav doesn't cover section titles */
+#the-day,
+#where-to-stay,
+#ceremony,
+#special-details,
+#where-to-stay-nearby,
+#travel,
+#rsvp {
+    scroll-margin-top: 10px;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    max-height: 1200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('venue-background.webp') center center/cover no-repeat;
+    background-attachment: fixed;
+    will-change: transform;
+}
+
+/* Disable fixed background on mobile for better performance and fix mobile background issues */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .hero-background {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        min-height: 100vh;
+        height: auto;
+        padding: 80px 0 40px 0;
+    }
+    
+    .hero-background {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: calc(100vh - 120px);
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .hero-title {
+        margin-bottom: 10px;
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(90, 92, 61, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: #fffdf3;
+    z-index: 2;
+    padding: 20px;
+    max-width: 90%;
+    width: 100%;
+}
+
+.hero-title {
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin-bottom: 5px;
+    will-change: transform;
+}
+
+.hero-name {
+    font-family: "The Seasons", serif;
+    font-size: clamp(40px, 8vw, 100px);
+    font-weight: 300;
+    letter-spacing: clamp(4px, 1.5vw, 8px);
+    display: block;
+    margin: -5px 0;
+    line-height: 0.9;
+}
+
+.hero-and {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(50px, 6vw, 70px);
+    display: block;
+    margin: -10px 0;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 0.8;
+}
+
+.hero-subtitle {
+    font-family: "The Seasons", serif;
+    font-size: clamp(18px, 3vw, 36px);
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin-top: 35px;
+    font-weight: 300;
+    letter-spacing: clamp(3px, 1vw, 6px);
+    line-height: 1.2;
+}
+
+/* Date Section */
+.date-section {
+    background: #fdf9f5;
+    padding: 100px 20px;
+}
+
+.date-photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.date-photo-wrapper {
+    padding: 15px;
+    background: #f9f6f1;
+    border: 4px solid #53543a;
+    position: relative;
+}
+
+.date-photo {
+    position: relative;
+    border: 3px solid #53543a;
+    padding: 20px;
+    background: #f9f6f1;
+}
+
+.date-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.date-display {
+    text-align: center;
+    padding: 40px;
+}
+
+.wedding-date {
+    font-family: "Luxurious Script", cursive;
+    font-size: 90px;
+    color: #53543a;
+    margin-bottom: 30px;
+    font-weight: 400;
+    line-height: 1.2;
+    font-style: italic;
+}
+
+.venue-name {
+    font-family: "The Seasons", serif;
+    font-size: clamp(20px, 3.5vw, 32px);
+    letter-spacing: 3px;
+    color: #53543a;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.date-at {
+    font-family: "The Seasons", serif;
+    font-size: clamp(20px, 3.5vw, 32px);
+    letter-spacing: 3px;
+    color: #53543a;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+/* Our Special Day Section */
+.our-special-day {
+    position: relative;
+    padding: 0;
+    min-height: 80vh;
+    overflow: hidden;
+}
+
+.pool-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('pool-background.webp') center center/cover no-repeat;
+}
+
+.pool-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(83, 84, 58, 0.6);
+}
+
+.pool-overlay {
+    position: relative;
+    margin: 40px 200px 60px 200px;
+    background: rgba(90, 92, 61, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    padding: clamp(20px, 3vh, 35px) clamp(20px, 4vw, 60px);
+    box-sizing: border-box;
+}
+
+.pool-overlay .container {
+    width: 100%;
+    max-width: 650px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.special-day-title {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(50px, 6vw, 70px);
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    font-weight: 400;
+    color: #fffdf3;
+    font-style: italic;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.special-day-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.special-day-content p {
+    font-family: "The Seasons", serif;
+    font-size: clamp(16px, 1.8vw, 18px);
+    line-height: 1.5;
+    color: #fffdf3;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.with-love {
+    font-family: "The Seasons", serif;
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: #fffdf3;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.couple-signature {
+    font-family: "Luxurious Script", cursive !important;
+    font-size: clamp(50px, 6vw, 70px) !important;
+    color: #fffdf3;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    margin-bottom: 0;
+    margin-top: -35px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+/* THE DAY Section */
+.the-day-section {
+    background: #fffdf3;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.the-day-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.the-day-title {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(36px, 4.5vw, 48px);
+    font-weight: 700;
+    font-style: normal;
+    color: #53543a;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* Where to Stay Section */
+.where-to-stay-section {
+    background: #fffdf3;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.where-to-stay-title {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(50px, 6vw, 70px);
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 400;
+    color: #53543a;
+    font-style: italic;
+}
+
+.where-to-stay-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.stay-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.stay-text {
+    text-align: left;
+    margin-left: 40px;
+}
+
+.stay-text p {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.5;
+    color: #3d3d3d;
+    margin-bottom: 20px;
+}
+
+.stay-button {
+    display: inline-block;
+    background: #53543a;
+    color: #fffdf3;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-family: "The Seasons", serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.stay-button:hover {
+    background: #6b7c5d;
+    transform: scale(1.05);
+}
+
+.stay-image-placeholder {
+    min-height: 480px;
+    background: url('marriott-hotel.png') center center/contain no-repeat;
+    background-color: transparent;
+    display: block;
+    border-radius: 0;
+    padding: 20px;
+    width: 100%;
+    margin-top: -60px;
+}
+
+/* Ceremony Section */
+.ceremony-section {
+    background: #fffdf3;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.ceremony-title {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    margin-bottom: 40px;
+    margin-top: 0;
+    color: #53543a;
+    letter-spacing: 2px;
+}
+
+.ceremony-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.ceremony-info {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.ceremony-church {
+    text-align: center;
+    margin-top: 0;
+}
+
+.church-image-wrapper {
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.church-image {
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    padding: 15px;
+}
+
+.church-address {
+    margin-top: 20px;
+}
+
+.church-address p {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(16px, 1.8vw, 18px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.5;
+    color: #3d3d3d;
+    margin: 0;
+}
+
+.ceremony-details {
+    padding-left: 0;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.ceremony-details p {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.6;
+    color: #3d3d3d;
+    margin-bottom: 25px;
+}
+
+.ceremony-details strong {
+    font-weight: 600;
+    color: #53543a;
+}
+
+/* The Day Section */
+.the-day-section {
+    background: #fffdf3;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.the-day-title {
+    font-family: "The Seasons", serif;
+    font-size: clamp(60px, 8vw, 100px);
+    font-weight: 300;
+    letter-spacing: 8px;
+    color: #53543a;
+    margin-bottom: 40px;
+}
+
+.the-day-subtitle {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(50px, 6vw, 70px);
+    color: #3d3d3d;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Reception Section */
+.reception-section {
+    padding: 100px 20px;
+    background: #fffdf3;
+}
+
+.reception-title {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    margin-bottom: 40px;
+    margin-top: 0;
+    color: #53543a;
+    letter-spacing: 0px;
+    word-spacing: -2px;
+    line-height: 1.2;
+}
+
+.reception-time {
+    font-size: inherit;
+}
+
+.reception-event {
+    font-size: clamp(32px, 4vw, 44px);
+}
+
+.reception-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.reception-info {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.reception-venue {
+    text-align: center;
+    margin-top: -20px;
+}
+
+.champagne-image-wrapper {
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+.champagne-image {
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    padding: 15px;
+}
+
+.venue-address p {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(16px, 1.8vw, 18px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.5;
+    color: #3d3d3d;
+    margin: 0;
+}
+
+.reception-details {
+    padding-left: 0;
+    margin-left: 40px;
+}
+
+.reception-details p {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.6;
+    color: #3d3d3d;
+    margin-bottom: 25px;
+}
+
+/* After Party Section */
+.after-party-section {
+    padding: 100px 20px;
+    background: #fffdf3;
+}
+
+.after-party-title {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    margin-bottom: 40px;
+    margin-top: 0;
+    color: #53543a;
+    letter-spacing: 2px;
+}
+
+.after-party-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.after-party-info {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.after-party-details {
+    padding-left: 0;
+    margin-left: 40px;
+}
+
+.after-party-details p {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.6;
+    color: #3d3d3d;
+    margin-bottom: 25px;
+}
+
+.after-party-venue {
+    text-align: center;
+    margin-top: -20px;
+}
+
+.disco-image-wrapper {
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+.disco-image {
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    padding: 15px;
+}
+
+/* Special Details Section */
+.special-details-section {
+    padding: 100px 20px;
+    background: #53543a;
+    text-align: center;
+}
+
+.special-details-title {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(50px, 6vw, 70px);
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 400;
+    color: #fffdf3;
+}
+
+.special-details-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.special-details-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    text-align: left;
+}
+
+.details-left, .details-right {
+    color: #fffdf3;
+}
+
+.detail-header {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(24px, 2.8vw, 30px);
+    font-weight: 700;
+    font-style: normal;
+    color: #fffdf3;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.detail-header:first-child {
+    margin-top: 0;
+}
+
+.special-details-section .details-left p, 
+.special-details-section .details-right p {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.4;
+    color: #fffdf3;
+    margin: 0 0 0 0 !important;
+    padding: 0 !important;
+}
+
+.special-details-section .details-left p:not(:last-child), 
+.special-details-section .details-right p:not(:last-child) {
+    margin-bottom: 0px !important;
+}
+
+.special-details-section .details-right p:first-of-type {
+    margin-bottom: 15px !important;
+}
+
+/* Other Hotel Accommodations Section */
+.other-hotels-section {
+    padding: 100px 20px;
+    background: #fffdf3;
+    text-align: center;
+}
+
+.other-hotels-title {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(50px, 6vw, 70px);
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 400;
+    color: #53543a;
+}
+
+.other-hotels-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.other-hotels-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hotels-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.hotel-box {
+    background: #53543a;
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-box-title {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(20px, 2.2vw, 24px);
+    font-weight: 700;
+    font-style: normal;
+    color: #fffdf3;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.hotel-box-link {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(20px, 2.2vw, 24px);
+    font-weight: 700;
+    font-style: normal;
+    color: #fffdf3;
+    text-decoration: none;
+    line-height: 1.3;
+}
+
+.hotel-box-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+}
+
+.hotel-box-description {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(16px, 1.8vw, 18px);
+    font-weight: 300;
+    font-style: normal;
+    color: #fffdf3;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Travel Section */
+.travel-section {
+    padding: 100px 20px;
+    background: #fffdf3;
+    text-align: center;
+}
+
+.travel-title {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(50px, 6vw, 70px);
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 400;
+    color: #53543a;
+}
+
+.travel-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.travel-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.travel-option {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.travel-option-title {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(24px, 3vw, 28px);
+    font-weight: 700;
+    font-style: normal;
+    color: #53543a;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.travel-option-details {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    font-style: normal;
+    color: #3d3d3d;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Comprehensive Responsive Design */
+/* Extra Large Screens */
+@media (min-width: 1400px) {
+    .hero-name {
+        font-size: 120px;
+    }
+    .hero-and {
+        font-size: 85px;
+    }
+    .hero-subtitle {
+        font-size: 42px;
+    }
+}
+
+/* Large Screens */
+@media (max-width: 1200px) {
+    .date-photo-grid {
+        gap: 60px;
+    }
+    .pool-overlay {
+        margin: 35px 150px 55px 150px;
+        padding: clamp(18px, 2.5vh, 30px) clamp(15px, 3vw, 45px);
+        min-height: 220px;
+    }
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 992px) {
+    .date-photo-grid {
+        gap: 40px;
+    }
+    .pool-overlay {
+        margin: 30px 100px 50px 100px;
+        padding: clamp(16px, 2vh, 28px) clamp(15px, 3vw, 45px);
+        min-height: 200px;
+    }
+    .pool-overlay .container {
+        padding: 35px 15px;
+    }
+    .wedding-date {
+        font-size: 75px;
+    }
+}
+
+/* Tablets and Small Desktops */
+@media (max-width: 768px) {
+    .date-photo-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .wedding-date {
+        font-size: 60px;
+    }
+
+    .pool-overlay {
+        margin: 25px 20px 40px 20px;
+        padding: clamp(15px, 2vh, 25px) clamp(10px, 2vw, 30px);
+        min-height: 180px;
+    }
+    
+    .pool-background {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+    }
+    
+    .our-special-day {
+        min-height: 70vh;
+    }
+    
+    .pool-overlay .container {
+        padding: 30px 15px;
+        max-width: 100%;
+    }
+    
+    .ceremony-info {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+    
+    .ceremony-church {
+        order: 1;
+    }
+    
+    .ceremony-details {
+        text-align: center;
+        order: 2;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .ceremony-details p {
+        text-align: left;
+    }
+    
+    .church-image {
+        max-width: 250px;
+    }
+
+    .stay-info {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+    
+    .stay-text {
+        text-align: center;
+    }
+    
+    .stay-image-placeholder {
+        max-width: 500px;
+        margin: -52px auto 0 auto;
+        min-height: 410px;
+        background-size: contain;
+        background-position: center center;
+        background-color: transparent;
+        padding: 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero-subtitle {
+        margin-top: 25px;
+    }
+
+    nav {
+        padding: 12px 0;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 576px) {
+    * {
+        box-sizing: border-box;
+    }
+    
+    html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        min-width: 320px;
+    }
+    
+    /* Hero Section Mobile Fixes */
+    .hero {
+        min-height: 100vh;
+        height: auto;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 120px 20px 80px 20px;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-name {
+        font-size: 56px;
+        letter-spacing: 3px;
+        margin: -3px 0;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .hero-and {
+        font-size: 42px;
+        margin: -8px 0;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .hero-subtitle {
+        font-size: 28px;
+        letter-spacing: 3px;
+        margin-top: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .wedding-date {
+        font-size: 64px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .venue-name {
+        font-size: 26px;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .date-at {
+        font-size: 26px;
+        letter-spacing: 1px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .date-photo-wrapper {
+        padding: 10px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .date-photo {
+        padding: 15px;
+        margin: 0 auto;
+    }
+    
+    /* Date Section Mobile Fixes */
+    .date-section {
+        padding: 80px 20px;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        background: #fdf9f5;
+        overflow-x: hidden;
+    }
+    
+    .date-photo-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 50px;
+        max-width: 350px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .date-display {
+        text-align: center;
+        padding: 30px 20px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .wedding-date {
+        font-size: 56px;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+        line-height: 0.9;
+    }
+
+    .date-at {
+        font-size: 24px;
+        letter-spacing: 1px;
+        text-align: center;
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    .venue-name {
+        font-size: 20px;
+        letter-spacing: 1px;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        line-height: 1.3;
+        white-space: normal;
+        max-width: 300px;
+    }
+
+    .date-photo-wrapper {
+        padding: 8px;
+        margin: 0 auto;
+        text-align: center;
+        max-width: 280px;
+        width: 100%;
+    }
+
+    .date-photo {
+        padding: 12px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Our Special Day Section Mobile Fixes */
+    .our-special-day {
+        min-height: 100vh;
+        padding: 0;
+        width: 100%;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .pool-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+
+    .pool-overlay {
+        position: relative;
+        margin: 25px 20px 25px 20px;
+        padding: clamp(15px, 2vh, 25px) clamp(18px, 3vw, 28px);
+        min-height: 155px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pool-overlay .container {
+        position: relative;
+        z-index: 2;
+        padding: 18px 15px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .special-day-title {
+        font-size: 42px;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto 30px auto;
+        line-height: 1.1;
+    }
+
+    .special-day-content {
+        max-width: 100%;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .special-day-content p {
+        font-size: 15px;
+        line-height: 1.5;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto 18px auto;
+    }
+
+    .couple-signature {
+        font-size: 36px !important;
+        text-align: center;
+        width: 100%;
+        margin-top: 5px;
+        line-height: 1.1;
+    }
+
+    .with-love {
+        margin-bottom: 5px !important;
+    }
+
+    .our-special-day {
+        min-height: 100vh;
+        padding: 0;
+    }
+
+    .pool-background {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        min-height: 100vh;
+    }
+    
+    .pool-overlay {
+        margin: 20px 15px 20px 15px;
+        padding: clamp(12px, 1.5vh, 20px) clamp(15px, 2.5vw, 22px);
+        min-height: 135px;
+    }
+
+    .special-day-content {
+        max-width: 100%;
+    }
+
+    .special-day-content p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .special-day-title {
+        font-size: 52px;
+    }
+
+    .date-section {
+        padding: 60px 15px;
+        min-height: auto;
+    }
+    
+    .date-photo-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .date-display {
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Ceremony Section Mobile */
+    .ceremony-section {
+        padding: 60px 20px;
+    }
+    
+    .ceremony-title {
+        font-family: "the-seasons", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        font-style: normal;
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    
+    .ceremony-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .ceremony-church {
+        order: 1;
+        margin-top: 0;
+    }
+    
+    .ceremony-details {
+        text-align: left;
+        order: 2;
+        padding-left: 0;
+        margin-left: 20px;
+        margin-right: 20px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .ceremony-details p {
+        font-family: "the-seasons", sans-serif;
+        font-size: 24px;
+        font-weight: 300;
+        font-style: normal;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+    
+    .church-image {
+        max-width: 220px;
+    }
+    
+    .church-address p {
+        font-family: "the-seasons", sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    /* Reception Section Mobile */
+    .reception-section {
+        padding: 80px 20px;
+    }
+    
+    .reception-title {
+        font-family: "the-seasons", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        font-style: normal;
+        margin-bottom: 40px;
+        letter-spacing: -0.5px;
+        word-spacing: -2px;
+        text-align: center;
+        line-height: 1.2;
+    }
+    
+    .reception-time {
+        font-size: inherit;
+    }
+    
+    .reception-event {
+        font-size: 36px;
+    }
+    
+    .reception-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .reception-venue {
+        order: 1;
+        margin-top: 0;
+    }
+    
+    .reception-details {
+        text-align: left;
+        order: 2;
+        padding-left: 0;
+        margin-left: 20px;
+        margin-right: 20px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .reception-details p {
+        font-family: "the-seasons", sans-serif;
+        font-size: 24px;
+        font-weight: 300;
+        font-style: normal;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+    
+    .champagne-image {
+        max-width: 220px;
+    }
+    
+    .venue-address p {
+        font-family: "the-seasons", sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    /* After Party Section Mobile */
+    .after-party-section {
+        padding: 80px 20px;
+    }
+    
+    .after-party-title {
+        font-family: "the-seasons", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        font-style: normal;
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    
+    .after-party-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .after-party-details {
+        text-align: left;
+        order: 2;
+        padding-left: 0;
+        margin-left: 20px;
+        margin-right: 20px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .after-party-venue {
+        order: 1;
+        margin-top: 0;
+    }
+    
+    .after-party-details p {
+        font-family: "the-seasons", sans-serif;
+        font-size: 24px;
+        font-weight: 300;
+        font-style: normal;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+    
+    .disco-image {
+        max-width: 220px;
+    }
+
+    /* Special Details Section Mobile */
+    .special-details-section {
+        padding: 80px 20px;
+    }
+    
+    .special-details-title {
+        font-size: 48px;
+        margin-bottom: 40px;
+    }
+    
+    .special-details-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .detail-header {
+        font-size: 26px;
+        margin-bottom: 12px;
+        margin-top: 25px;
+    }
+    
+    .detail-header:first-child {
+        margin-top: 0;
+    }
+    
+    .special-details-section .details-left p, 
+    .special-details-section .details-right p {
+        font-size: 24px;
+        line-height: 1.4;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .special-details-section .details-left p:not(:last-child), 
+    .special-details-section .details-right p:not(:last-child) {
+        margin-bottom: 0px !important;
+    }
+    
+    .special-details-section .details-right p:first-of-type {
+        margin-bottom: 12px !important;
+    }
+
+    /* Where to Stay Nearby Section Mobile */
+    .other-hotels-section {
+        padding: 80px 20px;
+    }
+    
+    .other-hotels-title {
+        font-size: 48px;
+        margin-bottom: 30px;
+    }
+    
+    .hotels-boxes {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hotel-box {
+        padding: 25px 20px;
+    }
+    
+    .hotel-box-title {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .hotel-box-link {
+        font-size: 20px;
+    }
+    
+    .hotel-box-description {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    /* Travel Section Mobile */
+    .travel-section {
+        padding: 80px 20px;
+    }
+    
+    .travel-title {
+        font-size: 48px;
+        margin-bottom: 40px;
+    }
+    
+    .travel-options {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 30px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .travel-option {
+        text-align: center;
+        padding: 15px 10px;
+    }
+    
+    .travel-option-title {
+        font-size: 26px;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+    
+    .travel-option-details {
+        font-size: 24px;
+        line-height: 1.4;
+    }
+    
+    /* Contact Section Mobile */
+    .contact-section {
+        padding: 60px 20px;
+    }
+    
+    .contact-message {
+        font-size: 26px;
+        margin-bottom: 30px;
+        line-height: 1.4;
+    }
+    
+    .contact-signature {
+        font-size: 48px;
+    }
+    
+    /* THE DAY Section Mobile */
+    .the-day-section {
+        padding: 60px 20px;
+    }
+    
+    .the-day-title {
+        font-size: 48px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .agenda-image-wrapper {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .agenda-image {
+        max-width: 100%;
+    }
+    
+    /* THE DAY Section Mobile */
+    .the-day-section {
+        padding: 60px 20px;
+    }
+    
+    .the-day-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+        letter-spacing: 2px;
+    }
+
+    /* TIER 1: Section Headers - Universal Mobile Centering */
+    .special-day-title,
+    .the-day-title,
+    .stay-title,
+    .ceremony-title,
+    .reception-title,
+    .after-party-title,
+    .special-details-title,
+    .other-hotels-title,
+    .travel-title,
+    .contact-section h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* TIER 2: Content Alignment - Text Left, Images Center */
+    .stay-text,
+    .ceremony-details,
+    .reception-details,
+    .after-party-details {
+        text-align: left !important;
+        margin-left: 20px;
+        margin-right: 20px;
+        max-width: 400px;
+    }
+
+    /* Images and visual elements centered */
+    .stay-image-placeholder,
+    .church-image,
+    .champagne-image,
+    .disco-ball-image,
+    .agenda-image-wrapper,
+    .timeline-image-wrapper {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    /* TIER 3: Section Container Uniformity */
+    .where-to-stay-section,
+    .ceremony-section,
+    .reception-section,
+    .after-party-section,
+    .special-details-section,
+    .other-hotels-section,
+    .travel-section {
+        padding: 60px 20px;
+    }
+
+    .where-to-stay-section {
+        padding: 60px 20px;
+    }
+    
+    .where-to-stay-title {
+        font-size: 48px;
+        margin-bottom: 25px;
+    }
+    
+    .stay-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: center;
+    }
+    
+    .stay-text {
+        text-align: left;
+        margin-left: 20px;
+        margin-right: 20px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .stay-text p {
+        font-family: "the-seasons", sans-serif;
+        font-size: 24px;
+        font-weight: 300;
+        font-style: normal;
+        margin-bottom: 18px;
+        line-height: 1.4;
+    }
+    
+    .stay-button {
+        padding: 12px 30px;
+        font-size: 16px;
+        margin-top: 30px;
+    }
+    
+    .stay-image-placeholder {
+        min-height: 380px;
+        order: 2;
+        margin: -35px auto 0 auto;
+        max-width: 100%;
+        width: 100%;
+        background-size: contain;
+        background-position: center center;
+        background-color: transparent;
+        padding: 20px;
+    }
+
+    /* Other Sections Mobile Fixes */
+    .the-day-section {
+        padding: 80px 20px;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        overflow-x: hidden;
+    }
+    
+    .the-day-title {
+        text-align: center;
+        width: 100%;
+        margin: 0 auto 30px auto;
+        font-size: 42px;
+        line-height: 1.1;
+    }
+    
+    .the-day-subtitle {
+        text-align: center;
+        width: 100%;
+        margin: 0 auto 40px auto;
+        font-size: 32px;
+        line-height: 1.4;
+        max-width: 300px;
+    }
+
+    /* Navigation Mobile */
+    nav {
+        padding: 12px 0;
+        width: 100%;
+    }
+    
+    nav .container {
+        width: 100%;
+        padding: 0 20px;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .nav-logo {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    #the-day,
+    #where-to-stay,
+    #ceremony,
+    #special-details,
+    #where-to-stay-nearby,
+    #travel,
+    #rsvp {
+        scroll-margin-top: 75px;
+    }
+    /* Container Controls */
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+}
+
+/* Extra Small Devices */
+@media (max-width: 375px) {
+    .hero-content {
+        padding: 15px;
+    }
+    
+    .hero-name {
+        font-size: 48px;
+        letter-spacing: 2px;
+    }
+    
+    .hero-and {
+        font-size: 36px;
+    }
+    
+    .hero-subtitle {
+        font-size: 24px;
+        margin-top: 18px;
+    }
+    
+    .wedding-date {
+        font-size: 56px;
+    }
+
+    .venue-name {
+        font-size: 24px;
+        letter-spacing: 0.5px;
+    }
+
+    .date-at {
+        font-size: 24px;
+        letter-spacing: 0.5px;
+    }
+
+    .special-day-title {
+        font-size: 46px;
+    }
+
+    .special-day-content p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    .the-day-subtitle {
+        font-size: 28px;
+    }
+    
+    .pool-overlay .container {
+        padding: 15px 12px;
+        max-width: 100%;
+    }
+
+    nav {
+        padding: 10px 0;
+    }
+
+    .nav-logo {
+        font-size: 24px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero-background {
+        background-image: url('venue-background.webp');
+    }
+    .pool-background {
+        background-image: url('pool-background.webp');
+    }
+}
+
+/* THE DAY Section */
+.the-day-section {
+    background: #fffdf3;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.the-day-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.the-day-title {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(50px, 6vw, 70px);
+    font-weight: 700;
+    font-style: normal;
+    color: #53543a;
+    margin-bottom: 50px;
+    line-height: 1.2;
+}
+
+.agenda-image-wrapper {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.agenda-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* Remove borders/shadows for seamless blend */
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+/* Contact Section */
+.contact-section {
+    background: #53543a;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-message {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 300;
+    font-style: normal;
+    color: #fffdf3;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.contact-signature {
+    font-family: "Luxurious Script", cursive;
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 400;
+    font-style: normal;
+    color: #fffdf3;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Landscape Phones */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        height: 100vh;
+        min-height: auto;
+    }
+    
+    .hero-name {
+        font-size: 32px;
+    }
+    
+    .hero-and {
+        font-size: 24px;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px;
+    }
+}
+/* ============================================
+   RSVP SECTION
+   ============================================ */
+
+.rsvp-section {
+    background: #f7f4ed;
+    padding: 100px 20px 120px;
+}
+
+.rsvp-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.rsvp-title {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(50px, 6vw, 70px);
+    font-weight: 700;
+    font-style: normal;
+    color: #53543a;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.rsvp-subtitle {
+    font-family: "the-seasons", sans-serif;
+    font-size: clamp(15px, 1.8vw, 18px);
+    font-weight: 300;
+    color: #7a7b5a;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.rsvp-embed-wrapper {
+    width: 100%;
+    height: 650px;
+    background: #ffffff;
+    border: 1px solid rgba(83, 84, 58, 0.18);
+    box-shadow: 0 4px 40px rgba(83, 84, 58, 0.08);
+}
+
+@media (max-width: 768px) {
+    .rsvp-section {
+        padding: 70px 16px 90px;
+    }
+
+    .rsvp-embed-wrapper {
+        height: 780px;
+    }
+}
